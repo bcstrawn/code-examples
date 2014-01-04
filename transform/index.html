@@ -1,0 +1,59 @@
+<html ng-app="upload">
+<head>
+	<title></title>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="angular-file-upload.js"></script>
+	<script type="text/javascript" src="canvas-to-blob.js"></script>
+	<script type="text/javascript">
+
+		angular.module('upload', ['angularFileUpload'])
+		.controller('uploadCtrl', ['$scope', '$http', function($scope, $http) {
+			$scope.fileName = '';
+
+			$scope.upload = function(file, fileName) {
+				$http.uploadFile({
+					url: '/upload', //upload.php script, node.js route, or servlet upload url)
+					// headers: {'optional', 'value'}
+					data: {fileName: fileName},
+					file: file
+				}).then(function(data, status, headers, config) {
+					// file is uploaded successfully
+					console.log(data);
+				});
+			};
+
+			$scope.uploadFile = function() {
+				var input = $('#myinput');
+				var file = input[0].files[0];
+				var reader = new FileReader();
+
+				reader.onload = function(e) {
+					var img = new Image();
+					img.src = e.target.result;
+					var canvas = document.createElement('canvas');
+					var ctx = canvas.getContext('2d');
+
+					canvas.width = 32;
+					canvas.height = 32;
+
+					ctx.drawImage(img, 0, 32, 32, 32, 0, 0, canvas.width, canvas.height);
+
+					canvas.toBlob(function (blob) {
+						$scope.upload(blob, $scope.fileName);
+					}, 'image/png');
+				};
+
+				reader.readAsDataURL(file);
+			};
+		}]);
+
+	</script>
+</head>
+<body ng-controller="uploadCtrl">
+	<p>My input:</p>
+	<input type="text" ng-model="fileName">
+	<input type="file" id="myinput">
+	<button ng-click="uploadFile()" ng-file-select="">Upload</button>
+</body>
+</html>

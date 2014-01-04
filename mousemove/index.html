@@ -1,0 +1,77 @@
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="pure.min.css">
+	<style type="text/css">
+		#test {
+			width:200px;
+			height:200px;
+			background:gray;
+			display: inline-block;
+		}
+
+		#test2 {
+			width:200px;
+			height:200px;
+			background:gray;
+			display: inline-block;
+		}
+
+		#mover {
+			width: 8px;
+			height: 200px;
+			display: inline-block;
+		}
+
+		#moverBar {
+			margin: auto;
+			width: 6px;
+			height: 200px;
+			background:navy;
+			cursor:e-resize;
+		}
+	</style>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			var holding = false;
+			var position = {};
+			var ww = $(window).width();
+			$('#test').width(ww / 2 - 8);
+			$('#test2').width(ww / 2 - 8);
+
+			$('body').on('mousemove', function(e) {
+				if (holding) {
+					var xDiff = e.pageX - position.x;
+					$('#test').width(widths.a + xDiff);
+					$('#test2').width(widths.b - xDiff);
+					// position = {x: e.pageX, y: e.pageY};
+				}
+			});
+
+			$('#mover').on('mousedown', function(e) {
+				holding = true;
+				position = {x: e.pageX, y: e.pageY};
+				var width = $('#test').width();
+				var width2 = $('#test2').width();
+				widths = {a: width, b: width2};
+			});
+
+			$('#mover').on('mouseup', function(e) {
+				holding = false;
+			});
+
+			$('body').on('mouseleave', function(e) {
+				holding = false;
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="test"></div>
+	<div id="mover">
+		<div id="moverBar"></div>
+	</div>
+	<div id="test2"></div>
+</body>
+</html>
