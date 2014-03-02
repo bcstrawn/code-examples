@@ -1,0 +1,71 @@
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript">
+		angular.module('myApp', [])
+
+		.controller('FirstCtrl', ['$scope', 'Data', function($scope, Data) {
+			$scope.data = Data;
+		}])
+
+		.controller('SecondCtrl', ['$scope', 'Data', 'People', function($scope, Data, People) {
+			$scope.data = Data;
+			$scope.people = People;
+		}])
+
+		.factory('Data', function() {
+			return {
+				message: "from a service"
+			};
+		})
+
+		.factory('People', function() {
+			return {
+				them: [
+					{name: 'Jeremy', age: 23},
+					{name: 'Ben', age: 23},
+					{name: 'Eric', age: 35}
+				]
+			};
+		})
+
+		.directive('person', function() {
+			return {
+				restrict: 'E',
+				template: '<div>a guy</div>'
+			};
+		})
+
+		.filter('reverse', function() {
+			return function (text) {
+				return text.split('').reverse().join('');
+			}
+		})
+	</script>
+</head>
+<body ng-app="myApp">
+	<div ng-controller="FirstCtrl">
+		<input type="text" ng-model="data.message">
+		<h3>{{data.message}}</h3>
+	</div>
+
+	<div ng-controller="SecondCtrl">
+		<input type="text" ng-model="data.message">
+		<h3>{{data.message | reverse}}</h3>
+
+		<input type="text" ng-model="search.name">
+		<input type="text" ng-model="search.age">
+
+		<table>
+			<tr ng-repeat="person in people.them | filter:search | orderBy:'-name' | limitTo:-2">
+				<td>{{person.name | lowercase}}</td>
+				<td>{{person.name | uppercase}}</td>
+				<td>{{person.age}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<a href="#" disabled="disabled">A link</a>
+</body>
+</html>
