@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="cave" tilewidth="32" tileheight="32">
+  <image source="cave.png" width="256" height="336"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="100" height="100">
+  <data encoding="base64" compression="zlib">
+   eJzt1TEKADEIBEC9Lvn/g3Nw2ASu1mIGFltBFjMinmCK9WZ3L8GvjK8vNelVfdGbWfRjFveYJa+4Ta91xS8BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADKAQg3AH0=
+  </data>
+ </layer>
+</map>

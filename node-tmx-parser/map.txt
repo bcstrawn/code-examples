@@ -1,0 +1,116 @@
+{
+  "version": "1.0",
+  "orientation": "orthogonal",
+  "width": 100,
+  "height": 100,
+  "tileWidth": 32,
+  "tileHeight": 32,
+  "layers": [
+    {
+      "map": "circular",
+      "type": "tile",
+      "name": "Tile Layer 1",
+      "opacity": 1,
+      "visible": true,
+      "properties": {},
+      "tiles": [
+        {
+          "id": 0,
+          "terrain": [],
+          "probability": null,
+          "properties": {},
+          "image": null
+        },
+        {
+          "id": 1,
+          "terrain": [],
+          "probability": null,
+          "properties": {},
+          "image": null
+        },
+        null,
+        null,
+        null
+      ],
+      "horizontalFlips": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "verticalFlips": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "diagonalFlips": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  ],
+  "properties": {},
+  "tileSets": [
+    {
+      "firstGid": 1,
+      "name": "cave",
+      "tileWidth": 32,
+      "tileHeight": 32,
+      "spacing": null,
+      "margin": null,
+      "tileOffset": {
+        "x": 0,
+        "y": 0
+      },
+      "properties": {},
+      "image": {
+        "source": "cave.png",
+        "width": 256,
+        "height": 336
+      },
+      "tiles": [
+        {
+          "id": 0,
+          "terrain": [],
+          "probability": null,
+          "properties": {},
+          "image": null
+        },
+        {
+          "id": 1,
+          "terrain": [],
+          "probability": null,
+          "properties": {},
+          "image": null
+        },
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        {
+          "id": 8,
+          "terrain": [],
+          "probability": null,
+          "properties": {},
+          "image": null
+        },
+        {
+          "id": 9,
+          "terrain": [],
+          "probability": null,
+          "properties": {},
+          "image": null
+        }
+      ],
+      "terrainTypes": []
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "chem",
+  "version": "0.0.0",
+  "description": "game prototype using chem game engine",
+  "scripts": {
+    "dev": "npm install && chem dev"
+  },
+  "dependencies": {
+    "chem-cli": "~1.2.0"
+  }
+}
